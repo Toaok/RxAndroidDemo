@@ -1,0 +1,130 @@
+apply from: "${rootDir.path}/version.gradle"
+ext {
+    configAndroidModuleDomain = this.&configAndroidModuleDomain
+    configAppBaseDependences = this.&configModuleBaseDependence
+}
+
+//app main
+def configAndroidModuleDomain(Project pro) {
+    configDefault(pro)
+    configField(pro)
+    configNdk(pro)
+    configBuildType(pro)
+    configSourceSets(pro)
+    configOption(pro)
+}
+
+//app base dependence
+def configModuleBaseDependence(Project pro) {
+    pro.dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+        implementation baseDependences.appcompat
+        implementation baseDependences.material
+        implementation baseDependences.constraintlayout
+
+        testImplementation baseDependences.junit
+        androidTestImplementation baseDependences.runner
+        androidTestImplementation baseDependences.espresso_core
+
+    }
+}
+
+
+//config Option
+def configOption(Project pro) {
+    pro.android {
+        lintOptions {
+            abortOnError false
+        }
+
+        dexOptions {
+//            incremental = true
+//            javaMaxHeapSize "4g"
+//            jumboMode = true
+        }
+        //打包时排出以下文件
+        packagingOptions {
+            //exclude 'META-INF/rxjava.properties'
+        }
+
+        compileOptions {
+            sourceCompatibility = '1.8'
+            targetCompatibility = '1.8'
+        }
+    }
+
+}
+
+//config sourceSets
+def configSourceSets(Project pro) {
+    pro.android.sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+//config build type
+def configBuildType(Project pro) {
+    pro.android {
+        buildTypes {
+            /*
+           * minifyEnabled　是否开启混淆
+           * zipAlignEnabled　是否优化apk文件，将apk文件中未压缩的数据在4个字节边界上对齐，具体见改善android性能工具：Zipalign
+           * shrinkResources 是否去除无用资源，任何在编译过程中没有用到的资源或者代码都会被删除，可以有效减小apk体积
+           * proguardFiles 指定混淆规则文件
+           * */
+            release {
+                minifyEnabled true
+                consumerProguardFiles 'proguard-rules.pro'
+            }
+
+            debug {
+            }
+        }
+    }
+}
+
+//config defaltConfig
+def configDefault(Project pro) {
+    pro.android {
+        compileSdkVersion androidConfig.compileSdkVersion
+        defaultConfig {
+            minSdkVersion androidConfig.minSdkVersion
+            targetSdkVersion androidConfig.targetSdkVersion
+            versionCode androidConfig.versionCode
+            versionName androidConfig.versionName
+        }
+    }
+
+}
+
+//config Field
+def configField(Project pro) {
+
+    pro.android.defaultConfig {
+
+        resValue "string", "app_name", androidConfig.appName
+    }
+}
+
+def configNdk(Project pro) {
+    pro.android{
+        defaultConfig {
+            externalNativeBuild {
+                cmake {
+                    cppFlags ""
+                    // 下面这样是增加的
+                    arguments "-DANDROID_ABI=armeabi-v7a"
+                }
+            }
+        }
+        externalNativeBuild {
+            cmake {
+                path "CMakeLists.txt"
+            }
+        }
+    }
+}
+

@@ -1,0 +1,135 @@
+ext {
+
+    //app version config info
+    androidConfig = [
+
+            applicationId    : "indi.toaok.rxandroiddemo",
+            appName          : "RxAnroidDemo",
+            compileSdkVersion: 28,
+            minSdkVersion    : 15,
+            targetSdkVersion : 28,
+            versionCode      : 1,
+            versionName      : '1.0',
+            flavorDimensions : 'default'
+    ]
+
+    //kind of plugins version info
+    pluginsVsersion = [
+            //gradle
+            gradle     : '3.2.1',
+            butterknife: '10.1.0'
+    ]
+
+    //plugins dependence info
+    pluginsDependence = [
+            gradle     : "com.android.tools.build:gradle:$pluginsVsersion.gradle",
+            butterknife: "com.jakewharton:butterknife-gradle-plugin:$pluginsVsersion.butterknife"
+    ]
+
+    //base dependence version info
+    baseDependdencsVersion = [
+            /**
+             * https://developer.android.google.cn/jetpack/androidx/migrate
+             */
+            androidx: [
+                    appcompat       : '1.0.0',
+                    material        : '1.0.0',
+                    constraintlayout: '1.1.2'
+            ],
+
+            //test
+            test    : [
+                    junit        : '4.12',
+                    runner       : '1.1.0',
+                    espresso_core: '3.1.0'
+            ],
+            //multidex
+            multidex: '2.0.0'
+    ]
+
+    //base dependence info
+    baseDependences = [
+            //androidx
+            appcompat       : "androidx.appcompat:appcompat:$baseDependdencsVersion.androidx.appcompat",
+            material        : "com.google.android.material:material:$baseDependdencsVersion.androidx.material",
+            constraintlayout: "androidx.constraintlayout:constraintlayout:$baseDependdencsVersion.androidx.constraintlayout",
+            //test
+            junit           : "junit:junit:$baseDependdencsVersion.test.junit",
+            runner          : "androidx.test:runner:$baseDependdencsVersion.test.runner",
+            espresso_core   : "androidx.test.espresso:espresso-core:$baseDependdencsVersion.test.espresso_core",
+
+            //multidex
+            multidex        : "androidx.multidex:multidex:$baseDependdencsVersion.multidex"
+    ]
+
+    //the third-party library version info
+    dependencesLibraryVersion = [
+            /**
+             * https://projectlombok.org/setup/android
+             */
+            lombok       : '1.16.18',
+            /**
+             * https://github.com/JakeWharton/butterknife
+             */
+            butterknife  : '10.1.0',
+            /**
+             * https://github.com/ReactiveX/RxJava
+             * https://github.com/ReactiveX/RxAndroid
+             */
+            rxjava       : '2.0.1',
+            /**
+             * https://github.com/square/okhttp
+             */
+            okhttp       : '3.11.0',
+            /**
+             * https://github.com/square/retrofit
+             */
+            retrofit     : '2.4.0',
+            /**
+             * https://github.com/bumptech/glide
+             */
+            glide        : '4.8.0',
+            /**
+             * https://github.com/google/gson
+             */
+            gson         : '2.8.2',
+            /**
+             * https://github.com/tbruyelle/RxPermissions
+             * add maven { url 'https://jitpack.io' } in project build.gradle
+             */
+            rxpermissions: '0.10.2',
+            /**/
+            commons_codec: '1.11'
+    ]
+
+    //the third-party library dependences info
+    dependencesLibrary = [
+
+            //lombok
+            lombok                   : "org.projectlombok:lombok:$dependencesLibraryVersion.lombok",
+
+            //butterknife
+            butterknife              : "com.jakewharton:butterknife:$dependencesLibraryVersion.butterknife",
+            butterknife_compiler     : "com.jakewharton:butterknife-compiler:$dependencesLibraryVersion.butterknife",
+
+            //rx
+            rxjava                   : "io.reactivex.rxjava2:rxjava:$dependencesLibraryVersion.rxjava",
+            rxandroid                : "io.reactivex.rxjava2:rxandroid:$dependencesLibraryVersion.rxjava",
+            //okhttp
+            okhttp                   : "com.squareup.okhttp3:okhttp:$dependencesLibraryVersion.okhttp",
+            //retrofit
+            retrofit                 : "com.squareup.retrofit2:retrofit:$dependencesLibraryVersion.retrofit",
+            converter_gson           : "com.squareup.retrofit2:converter-gson:$dependencesLibraryVersion.retrofit",
+            adapter_rxjava           : "com.squareup.retrofit2:adapter-rxjava:$dependencesLibraryVersion.retrofit",
+            //glide
+            glide                    : "com.github.bumptech.glide:glide:$dependencesLibraryVersion.glide",
+            glide_compiler           : "com.github.bumptech.glide:compiler:$dependencesLibraryVersion.glide",
+            glide_okhttp3_integration: "com.github.bumptech.glide:okhttp3-integration:$dependencesLibraryVersion.glide",
+            //gson
+            gson                     : "com.google.code.gson:gson:$dependencesLibraryVersion.gson",
+            //rxpermissions
+            rxpermissions            : "com.github.tbruyelle:rxpermissions:$dependencesLibraryVersion.rxpermissions",
+
+            commons_codec            : "commons-codec:commons-codec:$dependencesLibraryVersion.commons_codec"
+    ]
+}

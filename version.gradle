@@ -98,8 +98,14 @@ ext {
              * add maven { url 'https://jitpack.io' } in project build.gradle
              */
             rxpermissions: '0.10.2',
+            /**
+             * https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+             * add maven { url 'https://jitpack.io' } in project build.gradle
+             */
+            BRVAH        : '2.9.46',
             /**/
             commons_codec: '1.11'
+
     ]
 
     //the third-party library dependences info
@@ -129,7 +135,8 @@ ext {
             gson                     : "com.google.code.gson:gson:$dependencesLibraryVersion.gson",
             //rxpermissions
             rxpermissions            : "com.github.tbruyelle:rxpermissions:$dependencesLibraryVersion.rxpermissions",
-
+            //BRVAH
+            BRVAH                    : "com.github.CymChad:BaseRecyclerViewAdapterHelper:$dependencesLibraryVersion.BRVAH",
             commons_codec            : "commons-codec:commons-codec:$dependencesLibraryVersion.commons_codec"
     ]
 }

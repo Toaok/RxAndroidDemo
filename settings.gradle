@@ -1,1 +1,1 @@
-include ':app', ':Encrypt'
+include ':app'

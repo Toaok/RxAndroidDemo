@@ -116,7 +116,7 @@ def configNdk(Project pro) {
                 cmake {
                     cppFlags ""
                     // 下面这样是增加的
-                    arguments "-DANDROID_ABI=armeabi-v7a"
+//                    arguments "-DANDROID_ABI=armeabi-v7a"
                 }
             }
         }

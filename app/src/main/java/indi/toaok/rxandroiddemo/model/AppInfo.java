@@ -11,15 +11,18 @@ import lombok.experimental.Accessors;
 @Accessors(prefix = "m")
 public class AppInfo implements Comparable<Object> {
 
-   private String mName;
+    private String mName;
     private String mIcon;
 
     private String mVersion;
 
     private long mLastUpdateTime;
 
-    public AppInfo(String name, String icon, String version, long lastUpdateTime) {
+    private String mPackageName;
+
+    public AppInfo(String name, String packageName, String icon, String version, long lastUpdateTime) {
         mLastUpdateTime = lastUpdateTime;
+        mPackageName = packageName;
         mName = name;
         mIcon = icon;
         mVersion = version;

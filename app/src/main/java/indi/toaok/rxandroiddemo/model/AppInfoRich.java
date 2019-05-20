@@ -24,7 +24,7 @@ import lombok.experimental.Accessors;
 @Accessors(prefix = "m")
 public class AppInfoRich {
 
-    private static final String TAG=AppInfoRich.class.getSimpleName();
+    private static final String TAG = AppInfoRich.class.getSimpleName();
 
     @Getter
     private ResolveInfo mResolveInfo;
@@ -67,6 +67,12 @@ public class AppInfoRich {
             mIcon = mResolveInfo.loadIcon(mContext.getPackageManager()).mutate();
         }
         return mIcon;
+    }
+
+    public String getPackageName() {
+        if (mPackageInfo != null)
+            return mPackageInfo.applicationInfo.packageName;
+        return "";
     }
 
     public String getName() {

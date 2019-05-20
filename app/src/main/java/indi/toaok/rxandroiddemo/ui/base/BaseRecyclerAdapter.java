@@ -31,6 +31,8 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
 
     public LayoutInflater mInflater;
 
+    OnItemClickListener mOnItemClickListener;
+
     public BaseRecyclerAdapter(Context context, List<T> data) {
         this(context, data, true);
     }
@@ -61,14 +63,22 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
     @NonNull
     @Override
     public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = mInflater.inflate(R.layout.item_app_info, parent, false);
 
-        return new BaseViewHolder(mInflater.inflate(R.layout.item_app_info, parent, false));
+        return new BaseViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
         if (mData != null && position < mData.size()) {
             bindData(holder, position);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mOnItemClickListener != null)
+                        mOnItemClickListener.onItemClick(v, holder.getLayoutPosition());
+                }
+            });
         }
     }
 
@@ -114,6 +124,13 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
     protected void setAnimation(View viewToAnimate, int postion) {
     }
 
+    public OnItemClickListener getOnItemClickListener() {
+        return mOnItemClickListener;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
+    }
 
     public abstract @LayoutRes
     int getItemLayoutId();

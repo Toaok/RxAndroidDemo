@@ -74,6 +74,9 @@ def configLibDependences(Project pro) {
         //rxpermissions
         implementation dependencesLibrary.rxpermissions
 
+        //BRVAH
+        implementation dependencesLibrary.BRVAH
+
         /**
          * jar
          */
@@ -82,7 +85,7 @@ def configLibDependences(Project pro) {
          * module
          */
         //Encrypt
-        implementation project(':Encrypt')
+//        implementation project(':Encrypt')
     }
 }
 

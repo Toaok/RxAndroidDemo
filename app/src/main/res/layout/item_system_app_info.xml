@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/card_view"
     style="@style/RippleBtnTheme"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_5"
     android:clickable="true"
@@ -36,7 +36,7 @@
 
             <TextView
                 android:id="@+id/tv_app_name"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:padding="@dimen/padding_5"
@@ -46,7 +46,7 @@
 
             <TextView
                 android:id="@+id/tv_version"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_app_name"
                 android:maxLines="1"
